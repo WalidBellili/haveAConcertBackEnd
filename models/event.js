@@ -13,9 +13,11 @@ module.exports = (sequelize) => {
     },
     venueId: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     userId: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     availableSeats: {
       type: DataTypes.INTEGER,

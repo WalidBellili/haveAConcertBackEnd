@@ -10,6 +10,7 @@ module.exports = (sequelize) => {
     },
     eventId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
     vente: {
       type: DataTypes.INTEGER,
