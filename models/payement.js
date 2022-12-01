@@ -2,10 +2,10 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   const Payement = sequelize.define("Payement", {
-    orderId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+    // orderId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    // },
     stripeId: {
       type: DataTypes.INTEGER,
       allowNull: false,

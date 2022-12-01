@@ -41,54 +41,54 @@ const Venue = require("./venue")(sequelize);
 // Artist.hasMany(Event, { through: "artist_event" });
 
 // Adress relation
-// Adress.belongsTo(User);
-// Adress.belongsTo(Venue);
+Adress.belongsTo(User);
+Adress.belongsTo(Venue);
 
 // Artist relation
-// Artist.hasMany(Favorites);
+Artist.hasMany(Favorites);
 
 // Comment relations
-// Comment.hasMany(Like);
-// Comment.belongsTo(User);
-// Comment.belongsTo(Event);
-// Comment.belongsTo(Venue);
+Comment.hasMany(Like);
+Comment.belongsTo(User);
+Comment.belongsTo(Event);
+Comment.belongsTo(Venue);
 
 // Event relations
-// Event.belongsTo(User);
-// Event.hasMany(Order);
-// Event.belongsTo(Venue);
+Event.belongsTo(User);
+Event.hasMany(Order);
+Event.belongsTo(Venue);
 
 // Favorites relations
-// Favorites.belongsTo(Artist);
-// Favorites.belongsTo(User);
-// Favorites.belongsTo(Event);
-// Favorites.belongsTo(Venue);
+Favorites.belongsTo(Artist);
+Favorites.belongsTo(User);
+Favorites.belongsTo(Event);
+Favorites.belongsTo(Venue);
 
 // Like relations
-// Like.belongsTo(Comment);
-// Like.belongsTo(User);
+Like.belongsTo(Comment);
+Like.belongsTo(User);
 
 // Order relations
-// Order.belongsTo(Payement);
-// Order.belongsTo(User);
-// Order.belongsTo(Payement);
+Order.belongsTo(Payement);
+Order.belongsTo(User);
+Order.belongsTo(Payement);
 
 // Payement relation
-// Payement.belongsTo(Order);
+Payement.belongsTo(Order);
 
 // User relation
-// User.hasMany(Order);
-// User.hasMany(Event);
-// User.hasMany(Favorites);
-// User.hasOne(Adress);
-// User.hasMany(Comment);
-// User.hasMany(Like);
+User.hasMany(Order);
+User.hasMany(Event);
+User.hasMany(Favorites);
+User.hasOne(Adress);
+User.hasMany(Comment);
+User.hasMany(Like);
 
 // Venue relations
-// Venue.hasMany(Favorites);
-// Venue.hasMany(Comment);
-// Venue.hasMany(Event);
-// Venue.belongsTo(Adress);
+Venue.hasMany(Favorites);
+Venue.hasMany(Comment);
+Venue.hasMany(Event);
+Venue.belongsTo(Adress);
 
 // ------------------------------------------------
 

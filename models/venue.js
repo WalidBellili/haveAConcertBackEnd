@@ -8,10 +8,10 @@ module.exports = (sequelize) => {
     contact: {
       type: DataTypes.STRING,
     },
-    eventId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+    // eventId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    // },
     vente: {
       type: DataTypes.INTEGER,
     },

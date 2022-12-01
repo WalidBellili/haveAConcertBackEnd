@@ -11,14 +11,14 @@ module.exports = (sequelize) => {
     price: {
       type: DataTypes.STRING,
     },
-    venueId: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    userId: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // venueId: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
+    // userId: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
     availableSeats: {
       type: DataTypes.INTEGER,
     },

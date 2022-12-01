@@ -2,14 +2,14 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   const Adress = sequelize.define("Adress", {
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    venueId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+    // userId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    // },
+    // venueId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    // },
     streetNumber: {
       type: DataTypes.STRING,
     },
