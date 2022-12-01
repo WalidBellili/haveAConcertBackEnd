@@ -36,18 +36,35 @@ const Venue = require("./venue")(sequelize);
 
 // ------------ Relations -------------------------
 
+// Adress relation
 Adress.belongTo(User);
 User.hasOne(Adress);
 Adress.belongTo(Venue);
 Venue.hasOne(Adress);
-
+// Join table
 Event.belongToMany(Artist, { through: "artist_event" });
 Artist.hasMany(Event, { through: "artist_event" });
-
+// Favorites relations
 Favorites.hasMany(Artist);
 Artist.belongTo(Favorites);
 Favorites.belongTo(User);
 User.hasMany(Favorites);
+Favorites.belongTo(Event);
+Event.hasMany(Favorites);
+Favorites.belongTo(Venue);
+Venue.hasMany(Favorites);
+// Event relations
+Event.belongTo(User);
+User.hasMany(Event);
+Event.hasMany(Order);
+Order.belongTo(Event);
+Event.belongTo(Venue);
+Venue.hasMany(Event);
+// Order relations
+Order.belongTo(Payement);
+Payement.belongTo(Order);
+Order.belongTo(User);
+User.hasMany(Order);
 // ------------------------------------------------
 
 sequelize.sync({ alter: true });
