@@ -24,7 +24,7 @@ connectDb();
 
 const Adress = require("./adress")(sequelize);
 const Artist = require("./artist")(sequelize);
-const ArtistEvent = require("./artistEvent")(sequelize);
+
 const Comment = require("./comment")(sequelize);
 const Event = require("./event")(sequelize);
 const Favorites = require("./favorites")(sequelize);
@@ -33,6 +33,22 @@ const Order = require("./order")(sequelize);
 const Payement = require("./payement")(sequelize);
 const User = require("./user")(sequelize);
 const Venue = require("./venue")(sequelize);
+
+// ------------ Relations -------------------------
+
+Adress.belongTo(User);
+User.hasOne(Adress);
+Adress.belongTo(Venue);
+Venue.hasOne(Adress);
+
+Event.belongToMany(Artist, { through: "artist_event" });
+Artist.hasMany(Event, { through: "artist_event" });
+
+Favorites.hasMany(Artist);
+Artist.belongTo(Favorites);
+Favorites.belongTo(User);
+User.hasMany(Favorites);
+// ------------------------------------------------
 
 sequelize.sync({ alter: true });
 

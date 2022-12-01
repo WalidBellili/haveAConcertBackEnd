@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
     region: {
       type: DataTypes.STRING,
     },
-    pays: {
+    country: {
       type: DataTypes.STRING,
     },
     additionalInfo: {
