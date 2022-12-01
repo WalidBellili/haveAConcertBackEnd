@@ -65,6 +65,24 @@ Order.belongTo(Payement);
 Payement.belongTo(Order);
 Order.belongTo(User);
 User.hasMany(Order);
+// Payement relation
+Payement.belongTo(Order);
+Order.belongTo(Payement);
+// User relation
+User.hasMany(Order);
+Order.belongTo(User);
+User.hasMany(Event);
+Event.belongTo(User);
+User.hasMany(Favorites);
+Favorites.belongTo(User);
+User.hasOne(Adress);
+Adress.belongTo(User);
+User.hasMany(Comment);
+Comment.belongTo(User);
+User.hasMany(Like);
+Like.belongTo(User);
+// Like relations
+
 // ------------------------------------------------
 
 sequelize.sync({ alter: true });
