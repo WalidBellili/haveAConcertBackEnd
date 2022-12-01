@@ -37,58 +37,58 @@ const Venue = require("./venue")(sequelize);
 // ------------ Relations -------------------------
 
 // Join table
-Event.belongToMany(Artist, { through: "artist_event" });
-Artist.hasMany(Event, { through: "artist_event" });
+// Event.belongsToMany(Artist, { through: "artist_event" });
+// Artist.hasMany(Event, { through: "artist_event" });
 
 // Adress relation
-Adress.belongTo(User);
-Adress.belongTo(Venue);
+// Adress.belongsTo(User);
+// Adress.belongsTo(Venue);
 
 // Artist relation
-Artist.hasMany(Favorites);
+// Artist.hasMany(Favorites);
 
 // Comment relations
-Comment.hasMany(Like);
-Comment.belongTo(User);
-Comment.belongTo(Event);
-Comment.belongTo(Venue);
+// Comment.hasMany(Like);
+// Comment.belongsTo(User);
+// Comment.belongsTo(Event);
+// Comment.belongsTo(Venue);
 
 // Event relations
-Event.belongTo(User);
-Event.hasMany(Order);
-Event.belongTo(Venue);
+// Event.belongsTo(User);
+// Event.hasMany(Order);
+// Event.belongsTo(Venue);
 
 // Favorites relations
-Favorites.belongTo(Artist);
-Favorites.belongTo(User);
-Favorites.belongTo(Event);
-Favorites.belongTo(Venue);
+// Favorites.belongsTo(Artist);
+// Favorites.belongsTo(User);
+// Favorites.belongsTo(Event);
+// Favorites.belongsTo(Venue);
 
 // Like relations
-Like.belongTo(Comment);
-Like.belongTo(User);
+// Like.belongsTo(Comment);
+// Like.belongsTo(User);
 
 // Order relations
-Order.belongTo(Payement);
-Order.belongTo(User);
-Order.belongTo(Payement);
+// Order.belongsTo(Payement);
+// Order.belongsTo(User);
+// Order.belongsTo(Payement);
 
 // Payement relation
-Payement.belongTo(Order);
+// Payement.belongsTo(Order);
 
 // User relation
-User.hasMany(Order);
-User.hasMany(Event);
-User.hasMany(Favorites);
-User.hasOne(Adress);
-User.hasMany(Comment);
-User.hasMany(Like);
+// User.hasMany(Order);
+// User.hasMany(Event);
+// User.hasMany(Favorites);
+// User.hasOne(Adress);
+// User.hasMany(Comment);
+// User.hasMany(Like);
 
 // Venue relations
-Venue.hasMany(Favorites);
-Venue.hasMany(Comment);
-Venue.hasMany(Event);
-Venue.belongTo(Adress);
+// Venue.hasMany(Favorites);
+// Venue.hasMany(Comment);
+// Venue.hasMany(Event);
+// Venue.belongsTo(Adress);
 
 // ------------------------------------------------
 
@@ -98,7 +98,6 @@ const db = {
   sequelize,
   Adress,
   Artist,
-  ArtistEvent,
   Comment,
   Event,
   Favorites,
