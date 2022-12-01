@@ -36,70 +36,59 @@ const Venue = require("./venue")(sequelize);
 
 // ------------ Relations -------------------------
 
-// Adress relation
-Adress.belongTo(User);
-User.hasOne(Adress);
-Adress.belongTo(Venue);
-Venue.hasOne(Adress);
 // Join table
 Event.belongToMany(Artist, { through: "artist_event" });
 Artist.hasMany(Event, { through: "artist_event" });
-// Favorites relations
-Favorites.hasMany(Artist);
-Artist.belongTo(Favorites);
-Favorites.belongTo(User);
-User.hasMany(Favorites);
-Favorites.belongTo(Event);
-Event.hasMany(Favorites);
-Favorites.belongTo(Venue);
-Venue.hasMany(Favorites);
-// Event relations
-Event.belongTo(User);
-User.hasMany(Event);
-Event.hasMany(Order);
-Order.belongTo(Event);
-Event.belongTo(Venue);
-Venue.hasMany(Event);
-// Order relations
-Order.belongTo(Payement);
-Payement.belongTo(Order);
-Order.belongTo(User);
-User.hasMany(Order);
-// Payement relation
-Payement.belongTo(Order);
-Order.belongTo(Payement);
-// User relation
-User.hasMany(Order);
-Order.belongTo(User);
-User.hasMany(Event);
-Event.belongTo(User);
-User.hasMany(Favorites);
-Favorites.belongTo(User);
-User.hasOne(Adress);
+
+// Adress relation
 Adress.belongTo(User);
-User.hasMany(Comment);
-Comment.belongTo(User);
-User.hasMany(Like);
-Like.belongTo(User);
-// Like relations
-Like.belongTo(Comment);
-Comment.hasMany(Like);
-Like.belongTo(User);
-User.hasMany(Like);
+Adress.belongTo(Venue);
+
+// Artist relation
+Artist.hasMany(Favorites);
+
 // Comment relations
 Comment.hasMany(Like);
-Like.belongTo(Comment);
 Comment.belongTo(User);
-User.hasMany(Comment);
 Comment.belongTo(Event);
 Comment.belongTo(Venue);
-Event.hasMany(Comment);
-Venue.hasMany(Comment);
+
+// Event relations
+Event.belongTo(User);
+Event.hasMany(Order);
+Event.belongTo(Venue);
+
+// Favorites relations
+Favorites.belongTo(Artist);
+Favorites.belongTo(User);
+Favorites.belongTo(Event);
+Favorites.belongTo(Venue);
+
+// Like relations
+Like.belongTo(Comment);
+Like.belongTo(User);
+
+// Order relations
+Order.belongTo(Payement);
+Order.belongTo(User);
+Order.belongTo(Payement);
+
+// Payement relation
+Payement.belongTo(Order);
+
+// User relation
+User.hasMany(Order);
+User.hasMany(Event);
+User.hasMany(Favorites);
+User.hasOne(Adress);
+User.hasMany(Comment);
+User.hasMany(Like);
+
 // Venue relations
 Venue.hasMany(Favorites);
-Favorites.belongTo(Venue);
 Venue.hasMany(Comment);
 Venue.hasMany(Event);
+Venue.belongTo(Adress);
 
 // ------------------------------------------------
 
