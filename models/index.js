@@ -37,15 +37,15 @@ const Venue = require("./venue")(sequelize);
 // ------------ Relations -------------------------
 
 // Join table
-// Event.belongsToMany(Artist, { through: "artist_event" });
-// Artist.hasMany(Event, { through: "artist_event" });
+Event.belongsToMany(Artist, { through: "artist_event" });
+Artist.belongsToMany(Event, { through: "artist_event" });
 
 // Adress relation
 Adress.belongsTo(User);
 Adress.belongsTo(Venue);
 
 // Artist relation
-Artist.hasMany(Favorites);
+Artist.belongsTo(Favorites);
 
 // Comment relations
 Comment.hasMany(Like);
@@ -59,7 +59,7 @@ Event.hasMany(Order);
 Event.belongsTo(Venue);
 
 // Favorites relations
-Favorites.belongsTo(Artist);
+Favorites.hasMany(Artist);
 Favorites.belongsTo(User);
 Favorites.belongsTo(Event);
 Favorites.belongsTo(Venue);
