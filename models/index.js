@@ -24,7 +24,6 @@ connectDb();
 
 const Adress = require("./adress")(sequelize);
 const Artist = require("./artist")(sequelize);
-
 const Comment = require("./comment")(sequelize);
 const Event = require("./event")(sequelize);
 const Favorites = require("./favorites")(sequelize);
@@ -36,60 +35,49 @@ const Venue = require("./venue")(sequelize);
 
 // ------------ Relations -------------------------
 
-// Join table
-Event.belongsToMany(Artist, { through: "artist_event" });
-Artist.belongsToMany(Event, { through: "artist_event" });
-
-// Adress relation
 Adress.belongsTo(User);
 Adress.belongsTo(Venue);
 
-// Artist relation
-Artist.belongsTo(Favorites);
+Like.belongsTo(User);
+Like.belongsTo(Comment);
 
-// Comment relations
+User.hasMany(Like);
+User.hasMany(Comment);
+User.hasMany(Favorites);
+User.belongsToMany(Event, { through: "user_event" });
+User.hasMany(Order);
+User.hasOne(Adress);
+
+Order.belongsTo(User);
+Order.belongsTo(Payement);
+Order.belongsTo(Event);
+
+Payement.hasMany(Order);
+
 Comment.hasMany(Like);
 Comment.belongsTo(User);
 Comment.belongsTo(Event);
 Comment.belongsTo(Venue);
 
-// Event relations
-Event.belongsTo(User);
+Artist.belongsToMany(Event, { through: "artist_event" });
+Artist.hasMany(Favorites);
+
+Event.belongsToMany(Artist, { through: "artist_event" });
+Event.belongsToMany(User, { through: "user_event" });
 Event.hasMany(Order);
 Event.belongsTo(Venue);
+Event.hasMany(Comment);
+Event.hasMany(Favorites);
 
-// Favorites relations
-Favorites.hasMany(Artist);
+Venue.hasMany(Event);
+Venue.hasOne(Adress);
+Venue.hasMany(Comment);
+Venue.hasMany(Favorites);
+
+Favorites.belongsTo(Artist);
 Favorites.belongsTo(User);
 Favorites.belongsTo(Event);
 Favorites.belongsTo(Venue);
-
-// Like relations
-Like.belongsTo(Comment);
-Like.belongsTo(User);
-
-// Order relations
-Order.belongsTo(Payement);
-Order.belongsTo(User);
-Order.belongsTo(Payement);
-
-// Payement relation
-Payement.belongsTo(Order);
-
-// User relation
-User.hasMany(Order);
-User.hasMany(Event);
-User.hasMany(Favorites);
-User.hasOne(Adress);
-User.hasMany(Comment);
-User.hasMany(Like);
-
-// Venue relations
-Venue.hasMany(Favorites);
-Venue.hasMany(Comment);
-Venue.hasMany(Event);
-Venue.belongsTo(Adress);
-
 // ------------------------------------------------
 
 sequelize.sync({ alter: true });
