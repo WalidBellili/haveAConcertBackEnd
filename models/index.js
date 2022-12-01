@@ -22,21 +22,33 @@ const connectDb = async () => {
 
 connectDb();
 
-const User = require("./user")(sequelize);
-const Event = require("./event")(sequelize);
-const Venue = require("./venue")(sequelize);
-const Favorites = require("./favorites")(sequelize);
+const Adress = require("./adress")(sequelize);
 const Artist = require("./artist")(sequelize);
+const ArtistEvent = require("./artistEvent")(sequelize);
+const Comment = require("./comment")(sequelize);
+const Event = require("./event")(sequelize);
+const Favorites = require("./favorites")(sequelize);
+const Like = require("./like")(sequelize);
+const Order = require("./order")(sequelize);
+const Payement = require("./payement")(sequelize);
+const User = require("./user")(sequelize);
+const Venue = require("./venue")(sequelize);
 
 sequelize.sync({ alter: true });
 
 const db = {
   sequelize,
-  User,
-  Event,
-  Venue,
-  Favorites,
+  Adress,
   Artist,
+  ArtistEvent,
+  Comment,
+  Event,
+  Favorites,
+  Like,
+  Order,
+  Payement,
+  User,
+  Venue,
 };
 
 module.exports = db;
