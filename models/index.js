@@ -82,6 +82,24 @@ Comment.belongTo(User);
 User.hasMany(Like);
 Like.belongTo(User);
 // Like relations
+Like.belongTo(Comment);
+Comment.hasMany(Like);
+Like.belongTo(User);
+User.hasMany(Like);
+// Comment relations
+Comment.hasMany(Like);
+Like.belongTo(Comment);
+Comment.belongTo(User);
+User.hasMany(Comment);
+Comment.belongTo(Event);
+Comment.belongTo(Venue);
+Event.hasMany(Comment);
+Venue.hasMany(Comment);
+// Venue relations
+Venue.hasMany(Favorites);
+Favorites.belongTo(Venue);
+Venue.hasMany(Comment);
+Venue.hasMany(Event);
 
 // ------------------------------------------------
 
