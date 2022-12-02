@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const session = require("express-session");
 const port = 5000;
 const cors = require("cors");
 
@@ -11,6 +12,14 @@ require("./models/index");
 app.use(cors("*"));
 app.use(express.json());
 app.use(express.static("public"));
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: false,
+  })
+);
 
 app.use("/user", userRoutes);
 
